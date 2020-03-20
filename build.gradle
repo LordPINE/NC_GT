@@ -9,16 +9,11 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-repositories {
-    maven {
-        name = "CurseForge"
-        url = "https://minecraft.curseforge.com/api/maven/"
-    }
-}
+
 
 version = "1.0"
-group = "com.lordpine.nc_gt" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "nc_gt"
+group = "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "modid"
 
 sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 compileJava {
@@ -34,8 +29,34 @@ minecraft {
     // stable_#            stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not always work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "stable_39"
+    mappings = "snapshot_20171003"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+}
+
+repositories {
+    maven {
+        url = "http://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        // IC2
+        name = "ic2"
+        url = "http://maven.ic2.player.to/"
+    }
+    maven {
+        url "http://tehnut.info/maven"
+    }
+    maven {
+        url "https://minecraft.curseforge.com/api/maven"
+    }
+    maven {
+        url = "http://chickenbones.net/maven/"
+    }
+    maven {
+        url = "https://mod-buildcraft.com/maven/"
+    }
 }
 
 dependencies {
@@ -43,7 +64,7 @@ dependencies {
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
     //compile "some.group:artifact:version"
-      
+
     // real examples
     //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
     //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
@@ -59,8 +80,10 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-    deobfCompile 'nuclearcraft-overhauled:NuclearCraft:2o.0.4:1.12.2'
-    deobfCompile "gregtechce:gregtech:1.12.2:1.8.13.465"
+    deobfCompile "nuclearcraft-overhauled:NuclearCraft:${nuclearcraft_version}:${mc_version}"
+    deobfCompile "gregtechce:gregtech:${mc_version}:1.9.0.481"
+    compile files("libs/forestry_1.12.2-5.8.2.418.jar")
+    deobfCompile "net.industrial-craft:industrialcraft-2:${ic2_version}:api"
 }
 
 processResources {
