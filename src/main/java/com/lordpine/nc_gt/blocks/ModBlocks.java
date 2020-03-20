@@ -15,9 +15,14 @@ public class ModBlocks {
     @GameRegistry.ObjectHolder("nc_gt:rad_accelerator")
     public static Block rad_accelerator;
 
+    @GameRegistry.ObjectHolder("nc_gt:lv_turbine_coil")
+    public static Block lv_turbine_coil;
+
     public static void init() {
-//        rad_accelerator = new BlockRadDecayAccelerator(net.minecraft.block.material.Material.IRON, "rad_accelerator");
-//        registerBlock(rad_accelerator);
+        rad_accelerator = new BlockRadDecayAccelerator(net.minecraft.block.material.Material.IRON, "rad_accelerator");
+        registerBlock(rad_accelerator);
+        lv_turbine_coil = new BlockTurbineCoilGT(32);
+        registerBlock(lv_turbine_coil);
     }
 
     public static void registerBlock(Block block) {
@@ -32,6 +37,7 @@ public class ModBlocks {
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        //registerItemBlock(rad_accelerator, event);
+        registerItemBlock(rad_accelerator, event);
+        registerItemBlock(lv_turbine_coil, event);
     }
 }
